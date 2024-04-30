@@ -22,9 +22,7 @@ const Sidebar = () => {
                             <p>What Is React..</p>
                         </div>
                     </div> : null
-
                 }
-
             </div>
             <div className="buttom">
                 <div className="buttom_item recent-entry">
