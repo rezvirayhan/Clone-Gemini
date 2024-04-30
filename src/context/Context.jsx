@@ -18,16 +18,22 @@ const ContextPrivider = (props) => {
         }, 75 * index)
     }
 
+    const newChat = () => {
+        setLoading(false)
+        setShowResult(false)
+    }
+
 
     const onSent = async (prompt) => {
         setResultData("")
         setLoading(true)
         setShowResult(true)
+
         setRecentPrompt(input)
         setPrevPrompts(prev => [...prev, input])
         const responses = await runChat(input)
         let responsesArray = responses.split("**")
-        let newResponse;
+        let newResponse = "";
         for (let i = 0; i < responsesArray.length; i++) {
             if (i === 0 || i % 2 !== 1) {
                 newResponse += responsesArray[i]
@@ -57,7 +63,8 @@ const ContextPrivider = (props) => {
         loading,
         resultData,
         input,
-        setInput
+        setInput,
+        newChat
     }
     return (
         <Context.Provider value={contextValue}>
